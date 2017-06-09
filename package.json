@@ -1,0 +1,29 @@
+{
+  "name": "prepin",
+  "version": "1.0.0-0",
+  "description": "An in-place pre-processor for javascript files using C style pre-compile syntax to compose custom builds from npm-packages",
+  "keywords": [
+    "builds",
+    "custom",
+    "inplace",
+    "preprocessor"
+  ],
+  "license": "Unlicense",
+  "author": "commenthol <commenthol@gmail.com>",
+  "main": "src",
+  "bin": {
+    "prepin": "./bin/prepin.js"
+  },
+  "directories": {
+    "example": "example",
+    "test": "test"
+  },
+  "scripts": {
+    "lint": "eslint '**/.js'",
+    "test": "mocha"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "mocha": "^3.4.2"
+  }
+}

@@ -1,0 +1,8 @@
+node_modules/
+example/
+test/
+*.log
+*.tgz
+.*
+yarn.lock
+package-lock.json
