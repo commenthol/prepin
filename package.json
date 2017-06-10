@@ -8,6 +8,10 @@
     "inplace",
     "preprocessor"
   ],
+  "homepage": "https://github.com/commenthol/prepin#readme",
+  "bugs": {
+    "url": "https://github.com/commenthol/prepin/issues"
+  },
   "license": "Unlicense",
   "author": "commenthol <commenthol@gmail.com>",
   "main": "src",
@@ -17,6 +21,10 @@
   "directories": {
     "example": "example",
     "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/commenthol/prepin.git"
   },
   "scripts": {
     "lint": "eslint '**/.js'",
