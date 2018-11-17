@@ -1,7 +1,7 @@
 /* global describe, it */
 
 const assert = require('assert')
-const {evaluate, splitlines} = require('../src/utils')
+const { evaluate, splitlines } = require('../src/utils')
 
 describe('#utils', function () {
   it('should split into lines', function () {
@@ -12,21 +12,21 @@ describe('#utils', function () {
 4
 `
     const res = splitlines(str)
-    assert.deepEqual(res, ['', '1', '2', 'due', '3', 'tre', '4', ''])
+    assert.deepStrictEqual(res, ['', '1', '2', 'due', '3', 'tre', '4', ''])
   })
 
   it('should evaluate to true', function () {
-    const res = evaluate({flag: 1})('flag === 1')
-    assert.equal(res, true)
+    const res = evaluate({ flag: 1 })('flag === 1')
+    assert.strictEqual(res, true)
   })
 
   it('should evaluate defined(flag) to true', function () {
-    const res = evaluate({flag: 1})('defined(flag)')
-    assert.equal(res, true)
+    const res = evaluate({ flag: 1 })('defined(flag)')
+    assert.strictEqual(res, true)
   })
 
   it('should evaluate defined(flag) to false', function () {
     const res = evaluate({})('defined(flag)')
-    assert.equal(res, false)
+    assert.strictEqual(res, false)
   })
 })

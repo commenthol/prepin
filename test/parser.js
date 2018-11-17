@@ -6,38 +6,38 @@ const Parser = require('../src/parser')
 describe('#Parser', function () {
   it('should parse #ifdef when flag is defined', function () {
     const data = ['// #ifdef flag', 'test = 1', '// #endif'].join('\n')
-    const res = new Parser({flag: true}).parse(data)
-    assert.deepEqual(res, [ '// #ifdef flag', 'test = 1', '// #endif' ])
+    const res = new Parser({ flag: true }).parse(data)
+    assert.deepStrictEqual(res, [ '// #ifdef flag', 'test = 1', '// #endif' ])
   })
 
   it('should parse #ifndef when flag is defined', function () {
     const data = ['// #ifndef flag', 'test = 1', '// #endif'].join('\n')
-    const res = new Parser({flag: false}).parse(data)
-    assert.deepEqual(res, [ '// #ifndef flag', '// # test = 1', '// #endif' ])
+    const res = new Parser({ flag: false }).parse(data)
+    assert.deepStrictEqual(res, [ '// #ifndef flag', '// # test = 1', '// #endif' ])
   })
 
   it('should parse #ifndef when flag is not defined', function () {
     const data = ['// #ifndef flag', 'test = 1', '// #endif'].join('\n')
     const res = new Parser({}).parse(data)
-    assert.deepEqual(res, [ '// #ifndef flag', 'test = 1', '// #endif' ])
+    assert.deepStrictEqual(res, [ '// #ifndef flag', 'test = 1', '// #endif' ])
   })
 
   it('should parse #ifdef when flag is not defined', function () {
     const data = ['// #ifdef flag', 'test = 1', '// #endif'].join('\n')
     const res = new Parser({}).parse(data)
-    assert.deepEqual(res, [ '// #ifdef flag', '// # test = 1', '// #endif' ])
+    assert.deepStrictEqual(res, [ '// #ifdef flag', '// # test = 1', '// #endif' ])
   })
 
   it('should parse #if when flag is defined', function () {
     const data = ['// #if flag', 'test = 1', '// #endif'].join('\n')
-    const res = new Parser({flag: true}).parse(data)
-    assert.deepEqual(res, [ '// #if flag', 'test = 1', '// #endif' ])
+    const res = new Parser({ flag: true }).parse(data)
+    assert.deepStrictEqual(res, [ '// #if flag', 'test = 1', '// #endif' ])
   })
 
   it('should parse #if with expression', function () {
     const data = ['// #if flag == 1', 'test = 1', '// #endif'].join('\n')
-    const res = new Parser({flag: 1}).parse(data)
-    assert.deepEqual(res, [ '// #if flag == 1', 'test = 1', '// #endif' ])
+    const res = new Parser({ flag: 1 }).parse(data)
+    assert.deepStrictEqual(res, [ '// #if flag == 1', 'test = 1', '// #endif' ])
   })
 
   it('should parse #if #elif with expression flag = 0', function () {
@@ -51,8 +51,8 @@ describe('#Parser', function () {
       '// #endif',
       'var cont'
     ].join('\n')
-    const res = new Parser({flag: 0}).parse(data)
-    assert.deepEqual(res, [
+    const res = new Parser({ flag: 0 }).parse(data)
+    assert.deepStrictEqual(res, [
       '// #if flag == 1',
       '// # var test = 1',
       '// #elif flag == 2',
@@ -75,8 +75,8 @@ describe('#Parser', function () {
       '//#endif',
       'var cont'
     ].join('\n')
-    const res = new Parser({flag: 1}).parse(data)
-    assert.deepEqual(res, [
+    const res = new Parser({ flag: 1 }).parse(data)
+    assert.deepStrictEqual(res, [
       '//#if flag == 1',
       'var test = 1',
       '//#elif flag == 2',
@@ -98,7 +98,7 @@ describe('#Parser', function () {
       'var cont'
     ].join('\n')
     const res = new Parser({}).parse(data)
-    assert.deepEqual(res, [
+    assert.deepStrictEqual(res, [
       '// #ifndef flag',
       'var test = 1',
       '// #else',
@@ -120,7 +120,7 @@ describe('#Parser', function () {
       'var cont'
     ].join('\n')
     assert.throws(function () {
-      new Parser({flag: 1}).parse(data)
+      new Parser({ flag: 1 }).parse(data)
     }, /got #if expected #elif, #else, #endif/)
   })
 })
