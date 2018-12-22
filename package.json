@@ -1,6 +1,6 @@
 {
   "name": "prepin",
-  "version": "1.0.2-0",
+  "version": "1.0.2",
   "description": "An in-place pre-processor for javascript files using C style pre-compile syntax to compose custom builds from npm-packages",
   "keywords": [
     "builds",
