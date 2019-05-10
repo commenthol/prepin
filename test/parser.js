@@ -123,4 +123,23 @@ describe('#Parser', function () {
       new Parser({ flag: 1 }).parse(data)
     }, /got #if expected #elif, #else, #endif/)
   })
+
+  it('should pass on changed comments position', function () {
+    const data = [
+      '// #if flag == 1',
+      '// # var test = 1 // #else',
+      'var test = 3 // #endif',
+      'var cont'
+    ].join('\n')
+    const res = new Parser({ flag: 1 }).parse(data)
+    // console.log(res)
+    assert.deepStrictEqual(res, [
+      '// #if flag == 1',
+      'var test = 1 ',
+      '// #else',
+      '// # var test = 3 ',
+      '// #endif',
+      'var cont'
+    ])
+  })
 })
